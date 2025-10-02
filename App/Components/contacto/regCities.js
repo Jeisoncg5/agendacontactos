@@ -1,6 +1,6 @@
-import {postContacts,patchContacts,deleteContacts} from '../../../Apis/contact/contactApi.js';
-import ContactModel from '../../../Models/contactModel.js';
-export class RegContacto extends HTMLElement {
+import {postCities,patchCities,deleteCities} from '../../../Apis/contact/citiesApi.js';
+import CitiesModel from '../../../Models/citiesModel.js';
+export class RegCities extends HTMLElement {
 constructor() {
     super();
     this.render();
@@ -18,14 +18,15 @@ render() {
     </style>
         <div class="card mt-3">
             <div class="card-header">
-                Registro de Paises <span class="badge rounded-pill text-bg-primary" id="idView"></span>
+                Registro de Ciudades <span class="badge rounded-pill text-bg-primary" id="idView"></span>
             </div>
             <div class="card-body">
-                <form id="frmDataContacto">
+                <form id="frmDataCities">
                     <div class="row">
                         <div class="col">
-                            <label for="nombreCountry" class="form-label">Nombre Pais</label>
-                            <input type="text" class="form-control" id="nombreCountry" name ="nombreCountry">
+                            <label for="nombreCity" class="form-label">Nombre Ciudad</label>
+                            <input type="text" class="form-control" id="nombreCity" name ="nombreCity">
+                            
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -89,11 +90,11 @@ enabledBtns =() =>{
     })
 }
 editData = () =>{
-    const frmRegistro = document.querySelector('#frmDataContacto');
+    const frmRegistro = document.querySelector('#frmDataCities');
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
     const idView = document.querySelector('#idView');
     let id = idView.textContent;
-    patchContacts(datos,id)
+    patchCities(datos,id)
     .then(response => {
         // Verificar si la solicitud fue exitosa (código de respuesta en el rango 200)
         if (response.ok) {
@@ -115,7 +116,7 @@ editData = () =>{
 delData = () =>{
     const idView = document.querySelector('#idView');
     let id = idView.textContent;
-    deleteContacts(id)
+    deleteCities(id)
     .then(response => {
         // Verificar si la solicitud fue exitosa (código de respuesta en el rango 200)
         if (response.ok) {
@@ -137,10 +138,10 @@ delData = () =>{
     });   
 }
 saveData = () =>{
-        const frmRegistro = document.querySelector('#frmDataContacto');
+        const frmRegistro = document.querySelector('#frmDataCities');
         document.querySelector('#btnGuardar').addEventListener("click",(e) =>{
             const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-            postContacts(datos)
+            postCities(datos)
             .then(response => {
                 // Verificar si la solicitud fue exitosa (código de respuesta en el rango 200)
                 if (response.ok) {
@@ -169,15 +170,17 @@ viewData = (id)=>{
 }
 disableFrm = (estado) =>{
     let frm={
-        nombreCountry: '', 
+        nombreCity: '', 
+        idCountry: '',
+        idRegion: ''
     }
-        const frmRegistro = document.querySelector('#frmDataContacto');
+        const frmRegistro = document.querySelector('#frmDataCities');
         let myFrm = new FormData();
-        Object.entries(ContactModel).forEach(([key, value]) => myFrm.append(key, value));
+        Object.entries(CitiesModel).forEach(([key, value]) => myFrm.append(key, value));
         myFrm.forEach((value, key) => {
             frmRegistro.elements[key].value= value;
             frmRegistro.elements[key].disabled = estado;
         })
     }
 }
-customElements.define("reg-contacto", RegContacto);
+customElements.define("reg-cities", RegCities);

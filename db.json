@@ -1,0 +1,29 @@
+{
+  "countries": [
+    {
+      "nombreCountry": "Colombia",
+      "id": 1
+    }
+  ],
+  "cities": [
+    {
+      "nombreCity": "bogota",
+      "id": 2
+    },
+    {
+      "nombreCity": "Madrid",
+      "id": 3
+    },
+    {
+      "nombreCity": "yucatan",
+      "id": 4
+    }
+  ],
+  "regions": [
+    {
+      "nombreRegion": "andina",
+      "idCountry": 1,
+      "id": 1
+    }
+  ]
+}

@@ -13,10 +13,10 @@ export class ContactoComponent extends HTMLElement {
       </style>
       <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active mnucontacto" aria-current="page" href="#" data-verocultar='["#regContacto",["#lstContacto"]]'>Registrar Contacto</a>
+        <a class="nav-link active mnucontacto" aria-current="page" href="#" data-verocultar='["#regContacto",["#lstContacto"]]'>Registrar Paises</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link mnucontacto" href="#" data-verocultar='["#lstContacto",["#regContacto"]]'>Listado de contactos</a>
+        <a class="nav-link mnucontacto" href="#" data-verocultar='["#lstContacto",["#regContacto"]]'>Listado de Paises</a>
       </li>
     </ul>
     <div class="container" id="regContacto" style="display:block;">

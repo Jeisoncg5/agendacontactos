@@ -1,8 +1,4 @@
 const ContactModel = {
-    nombreContacto: '',
-    apellidoContacto: '',
-    nroCelular: '',
-    emailContacto: '',
-    nroResidencia: ''
+    nombreCountry: ''
 }
 export default ContactModel;

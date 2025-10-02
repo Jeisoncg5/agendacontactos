@@ -1,4 +1,4 @@
-export class LstContacto extends HTMLElement {
+export class LstCiudad extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -19,9 +19,9 @@ export class LstContacto extends HTMLElement {
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>     
-      `
+    `
 
-  }
+}
 }
 
-customElements.define("lst-contacto", LstContacto);
+customElements.define("lst-ciudad", LstCiudad);

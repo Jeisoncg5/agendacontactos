@@ -2,9 +2,9 @@ const URL_API = "http://localhost:3000";
 const myHeaders = new Headers({
     "Content-Type": "application/json"
 });
-const getContact = async() => {
+const getCities = async() => {
     try {
-        const respuesta = await fetch(`${URL_API}/countries`);
+        const respuesta = await fetch(`${URL_API}/cities`);
 		// Si la respuesta es correcta
 		if(respuesta.status === 200){
 			const datos = await respuesta.json();
@@ -20,9 +20,9 @@ const getContact = async() => {
 	}
     
 }
-const postContact = async (datos) => {
+const postCities = async (datos) => {
     try {
-        return await fetch(`${URL_API}/countries`, {
+        return await fetch(`${URL_API}/cities`, {
             method: "POST",
             headers: myHeaders,
             body: JSON.stringify(datos)
@@ -31,10 +31,10 @@ const postContact = async (datos) => {
         console.error('Error en la solicitud POST:', error.message);
     }
 }
-const patchContact = async (datos,id) =>{
+const patchCities = async (datos,id) =>{
 
     try {
-        return await fetch(`${URL_API}/countries/${id}`, {
+        return await fetch(`${URL_API}/cities/${id}`, {
             method: "PATCH",
             headers: myHeaders,
             body: JSON.stringify(datos)
@@ -44,10 +44,10 @@ const patchContact = async (datos,id) =>{
     }
 
 }
-const deleteContact = async (id) =>{
+const deleteCities = async (id) =>{
 
     try {
-        return await fetch(`${URL_API}/countries/${id}`, {
+        return await fetch(`${URL_API}/cities/${id}`, {
             method: "DELETE",
             headers: myHeaders,
         });
@@ -57,8 +57,8 @@ const deleteContact = async (id) =>{
 
 }
 export {
-    getContact as getContacts,
-    postContact as postContacts,
-    patchContact as patchContacts,
-    deleteContact as deleteContacts
+    getCities as getCities,
+    postCities as postCities,
+    patchCities as patchCities,
+    deleteCities as deleteCities
 };
