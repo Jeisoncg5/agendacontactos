@@ -3,6 +3,10 @@
     {
       "id": "be5f",
       "nombreCountry": "Camerun"
+    },
+    {
+      "id": "d46b",
+      "nombreCountry": "españa"
     }
   ],
   "cities": [
@@ -11,6 +15,12 @@
       "idCountry": "be5f",
       "idRegion": "dec9",
       "nombreCity": "NotengoNiideaÑero"
+    },
+    {
+      "id": "d2f0",
+      "idCountry": "d46b",
+      "idRegion": "45de",
+      "nombreCity": "Barcelona"
     }
   ],
   "regions": [
@@ -18,6 +28,11 @@
       "id": "dec9",
       "idCountry": "be5f",
       "nombreRegion": "Chocolandia"
+    },
+    {
+      "id": "45de",
+      "idCountry": "d46b",
+      "nombreRegion": "madrid"
     }
   ]
 }
