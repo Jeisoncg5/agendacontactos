@@ -117,18 +117,18 @@ render() {
     })
 }
 resetIdView =() =>{
-    const idView = document.querySelector('#idView');
+    const idView = this.querySelector('#idView');
     idView.innerHTML = '';   
 }
 eventoEditar =() =>{
-    document.querySelector('#btnEditar').addEventListener("click",(e) =>{
+    this.querySelector('#btnEditar').addEventListener("click",(e) =>{
         this.editData();
         e.stopImmediatePropagation();
         e.preventDefault();        
     });
 }
 eventoEliminar =() =>{
-    document.querySelector('#btnEliminar').addEventListener("click",(e) =>{
+    this.querySelector('#btnEliminar').addEventListener("click",(e) =>{
         this.delData();
         e.stopImmediatePropagation();
         e.preventDefault();        
@@ -137,11 +137,11 @@ eventoEliminar =() =>{
 ctrlBtn = (e) =>{
     let data = JSON.parse(e);
     data[0].forEach(boton => {
-        let btnActual = document.querySelector(boton);
+        let btnActual = this.querySelector(boton);
         btnActual.classList.remove('disabled');
     });
     data[1].forEach(boton => {
-        let btnActual = document.querySelector(boton);
+        let btnActual = this.querySelector(boton);
         btnActual.classList.add('disabled');
     });
 }
@@ -151,9 +151,9 @@ enabledBtns =() =>{
     })
 }
 editData = () =>{
-    const frmRegistro = document.querySelector('#frmDataRegions');
+    const frmRegistro = this.querySelector('#frmDataRegions');
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-    const idView = document.querySelector('#idView');
+    const idView = this.querySelector('#idView');
     let id = idView.textContent;
     patchRegions(datos,id)
     .then(response => {
@@ -175,7 +175,7 @@ editData = () =>{
     
 }
 delData = () =>{
-    const idView = document.querySelector('#idView');
+    const idView = this.querySelector('#idView');
     let id = idView.textContent;
     deleteRegions(id)
     .then(response => {
@@ -230,8 +230,8 @@ delData = () =>{
     });   
 }
 saveData = () =>{
-        const frmRegistro = document.querySelector('#frmDataRegions');
-        document.querySelector('#btnGuardar').addEventListener("click",(e) =>{
+        const frmRegistro = this.querySelector('#frmDataRegions');
+        this.querySelector('#btnGuardar').addEventListener("click",(e) =>{
             const datos = Object.fromEntries(new FormData(frmRegistro).entries());
             postRegions(datos)
             .then(response => {
@@ -257,7 +257,7 @@ saveData = () =>{
         })
 }
 viewData = (id)=>{
-    const idView = document.querySelector('#idView');
+    const idView = this.querySelector('#idView');
     idView.innerHTML = id;
 }
 disableFrm = (estado) =>{
@@ -265,7 +265,7 @@ disableFrm = (estado) =>{
         nombreRegion: '', 
         idCountry: ''
     }
-        const frmRegistro = document.querySelector('#frmDataRegions');
+        const frmRegistro = this.querySelector('#frmDataRegions');
         let myFrm = new FormData();
         Object.entries(RegionsModel).forEach(([key, value]) => myFrm.append(key, value));
         myFrm.forEach((value, key) => {

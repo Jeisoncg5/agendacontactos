@@ -181,3 +181,5 @@ disableFrm = (estado) =>{
     }
 }
 customElements.define("reg-contacto", RegContacto);
+// Refresca listados al crear/editar/eliminar país
+try{ window.dispatchEvent(new CustomEvent('data-changed', { detail: { type: 'countries' } })); }catch(e){}

@@ -1,16 +1,23 @@
 {
   "countries": [
     {
-      "id": "3bcc",
-      "nombreCountry": "Colombia"
+      "id": "be5f",
+      "nombreCountry": "Camerun"
     }
   ],
-  "cities": [],
+  "cities": [
+    {
+      "id": "400c",
+      "idCountry": "be5f",
+      "idRegion": "dec9",
+      "nombreCity": "NotengoNiideaÑero"
+    }
+  ],
   "regions": [
     {
-      "id": "6720",
-      "idCountry": "3bcc",
-      "nombreRegion": "ohzi"
+      "id": "dec9",
+      "idCountry": "be5f",
+      "nombreRegion": "Chocolandia"
     }
   ]
 }
