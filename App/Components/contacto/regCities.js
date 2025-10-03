@@ -9,6 +9,62 @@ constructor() {
     this.eventoEditar();
     this.eventoEliminar();
     this.disableFrm(true);
+    this.loadCountriesForCities = async () => {
+        try{
+            const r = await fetch('http://localhost:3000/countries');
+            const countries = await r.json();
+            const selC = this.querySelector('#idCountry');
+            const selR = this.querySelector('#idRegion');
+            if(!selC || !selR) return;
+            selC.innerHTML = ''; selR.innerHTML = '';
+            if(!countries || countries.length===0){
+                selC.disabled = true; selR.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+                this.querySelector('#alertMsgCities')?.remove();
+                const body = this.querySelector('#frmDataCities').closest('.card-body');
+                const div = document.createElement('div');
+                div.id = 'alertMsgCities';
+                div.className = 'alert alert-warning mt-3';
+                div.textContent = 'Primero crea Países y Regiones para poder crear Ciudades.';
+                body.appendChild(div);
+            }else{
+                countries.forEach(c => {
+                    const o = document.createElement('option');
+                    o.value = c.id; o.textContent = c.nombreCountry;
+                    selC.appendChild(o);
+                });
+                selC.disabled = false;
+                await this.loadRegionsForCountry(selC.value);
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+            selC.addEventListener('change', async (e)=>{
+                await this.loadRegionsForCountry(e.target.value);
+            });
+        }catch(e){ console.error(e); }
+    }
+    this.loadRegionsForCountry = async (countryId) => {
+        const selR = this.querySelector('#idRegion');
+        if(!selR) return;
+        selR.innerHTML = '';
+        try{
+            const r = await fetch(`http://localhost:3000/regions?idCountry=${countryId}`);
+            const regs = await r.json();
+            if(!regs || regs.length===0){
+                selR.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+            }else{
+                regs.forEach(rg => {
+                    const o = document.createElement('option');
+                    o.value = rg.id; o.textContent = rg.nombreRegion;
+                    selR.appendChild(o);
+                });
+                selR.disabled = false;
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+        }catch(e){ console.error(e); }
+    }
+    this.loadCountriesForCities();
+    
 }
 
 render() {
@@ -21,7 +77,7 @@ render() {
                 Registro de Ciudades <span class="badge rounded-pill text-bg-primary" id="idView"></span>
             </div>
             <div class="card-body">
-                <form id="frmDataCities">
+                <form id="frmDataCities">\n                    <div class="row">\n                        <div class="col">\n                            <label for="idCountry" class="form-label">País</label>\n                            <select class="form-select" id="idCountry" name="idCountry"></select>\n                        </div>\n                        <div class="col">\n                            <label for="idRegion" class="form-label">Región</label>\n                            <select class="form-select" id="idRegion" name="idRegion"></select>\n                        </div>\n                    </div>
                     <div class="row">
                         <div class="col">
                             <label for="nombreCity" class="form-label">Nombre Ciudad</label>
@@ -53,6 +109,62 @@ render() {
         this.ctrlBtn(e.target.dataset.ed);
         this.resetIdView();
         this.disableFrm(true);
+    this.loadCountriesForCities = async () => {
+        try{
+            const r = await fetch('http://localhost:3000/countries');
+            const countries = await r.json();
+            const selC = this.querySelector('#idCountry');
+            const selR = this.querySelector('#idRegion');
+            if(!selC || !selR) return;
+            selC.innerHTML = ''; selR.innerHTML = '';
+            if(!countries || countries.length===0){
+                selC.disabled = true; selR.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+                this.querySelector('#alertMsgCities')?.remove();
+                const body = this.querySelector('#frmDataCities').closest('.card-body');
+                const div = document.createElement('div');
+                div.id = 'alertMsgCities';
+                div.className = 'alert alert-warning mt-3';
+                div.textContent = 'Primero crea Países y Regiones para poder crear Ciudades.';
+                body.appendChild(div);
+            }else{
+                countries.forEach(c => {
+                    const o = document.createElement('option');
+                    o.value = c.id; o.textContent = c.nombreCountry;
+                    selC.appendChild(o);
+                });
+                selC.disabled = false;
+                await this.loadRegionsForCountry(selC.value);
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+            selC.addEventListener('change', async (e)=>{
+                await this.loadRegionsForCountry(e.target.value);
+            });
+        }catch(e){ console.error(e); }
+    }
+    this.loadRegionsForCountry = async (countryId) => {
+        const selR = this.querySelector('#idRegion');
+        if(!selR) return;
+        selR.innerHTML = '';
+        try{
+            const r = await fetch(`http://localhost:3000/regions?idCountry=${countryId}`);
+            const regs = await r.json();
+            if(!regs || regs.length===0){
+                selR.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+            }else{
+                regs.forEach(rg => {
+                    const o = document.createElement('option');
+                    o.value = rg.id; o.textContent = rg.nombreRegion;
+                    selR.appendChild(o);
+                });
+                selR.disabled = false;
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+        }catch(e){ console.error(e); }
+    }
+    this.loadCountriesForCities();
+    
     })
 }
 resetIdView =() =>{
@@ -129,6 +241,62 @@ delData = () =>{
     .then(responseData => {
         this.resetIdView();
         this.disableFrm(true);
+    this.loadCountriesForCities = async () => {
+        try{
+            const r = await fetch('http://localhost:3000/countries');
+            const countries = await r.json();
+            const selC = this.querySelector('#idCountry');
+            const selR = this.querySelector('#idRegion');
+            if(!selC || !selR) return;
+            selC.innerHTML = ''; selR.innerHTML = '';
+            if(!countries || countries.length===0){
+                selC.disabled = true; selR.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+                this.querySelector('#alertMsgCities')?.remove();
+                const body = this.querySelector('#frmDataCities').closest('.card-body');
+                const div = document.createElement('div');
+                div.id = 'alertMsgCities';
+                div.className = 'alert alert-warning mt-3';
+                div.textContent = 'Primero crea Países y Regiones para poder crear Ciudades.';
+                body.appendChild(div);
+            }else{
+                countries.forEach(c => {
+                    const o = document.createElement('option');
+                    o.value = c.id; o.textContent = c.nombreCountry;
+                    selC.appendChild(o);
+                });
+                selC.disabled = false;
+                await this.loadRegionsForCountry(selC.value);
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+            selC.addEventListener('change', async (e)=>{
+                await this.loadRegionsForCountry(e.target.value);
+            });
+        }catch(e){ console.error(e); }
+    }
+    this.loadRegionsForCountry = async (countryId) => {
+        const selR = this.querySelector('#idRegion');
+        if(!selR) return;
+        selR.innerHTML = '';
+        try{
+            const r = await fetch(`http://localhost:3000/regions?idCountry=${countryId}`);
+            const regs = await r.json();
+            if(!regs || regs.length===0){
+                selR.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+            }else{
+                regs.forEach(rg => {
+                    const o = document.createElement('option');
+                    o.value = rg.id; o.textContent = rg.nombreRegion;
+                    selR.appendChild(o);
+                });
+                selR.disabled = false;
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+        }catch(e){ console.error(e); }
+    }
+    this.loadCountriesForCities();
+    
         this.ctrlBtn(e.target.dataset.ed);
         // Hacer algo con la respuesta exitosa si es necesario
     })

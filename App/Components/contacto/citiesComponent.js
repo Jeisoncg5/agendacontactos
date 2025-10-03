@@ -1,5 +1,5 @@
-import '/App/Components/contacto/regCities.js';
-import '/App/Components/contacto/lstCities.js';
+import './regCities.js';
+import './lstCities.js';
 // App/Components/contacto/citiesComponent.js
 export class CiudadComponent extends HTMLElement {
     constructor() {
@@ -11,7 +11,7 @@ export class CiudadComponent extends HTMLElement {
 render() {
     this.innerHTML = /* html */ `
     <style rel="stylesheet">
-        @import "./App/Components/contacto/contactoStyle.css";
+        @import './contactoStyle.css";
     </style>
     <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -47,3 +47,4 @@ render() {
 
 
 customElements.define("ciudad-component", CiudadComponent);
+try{ customElements.define("cities-component", CiudadComponent); }catch(e){}

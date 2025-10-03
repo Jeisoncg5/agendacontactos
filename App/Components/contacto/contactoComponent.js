@@ -1,5 +1,5 @@
-import '/App/Components/contacto/regContacto.js';
-import '/App/Components/contacto/lstContacto.js';
+import './regContacto.js';
+import './lstContacto.js';
 export class ContactoComponent extends HTMLElement {
   constructor() {
     super();
@@ -9,7 +9,7 @@ export class ContactoComponent extends HTMLElement {
   render() {
     this.innerHTML = /* html */ `
       <style rel="stylesheet">
-        @import "./App/Components/contacto/contactoStyle.css";
+        @import './contactoStyle.css";
       </style>
       <ul class="nav nav-tabs">
       <li class="nav-item">

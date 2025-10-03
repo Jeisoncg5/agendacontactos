@@ -9,6 +9,37 @@ constructor() {
     this.eventoEditar();
     this.eventoEliminar();
     this.disableFrm(true);
+    this.loadCountries = async () => {
+        try{
+            const r = await fetch('http://localhost:3000/countries');
+            const countries = await r.json();
+            const sel = this.querySelector('#idCountry');
+            if(!sel) return;
+            sel.innerHTML = '';
+            if(!countries || countries.length===0){
+                sel.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+                this.querySelector('#alertMsg')?.remove();
+                const body = this.querySelector('#frmDataRegions').closest('.card-body');
+                const div = document.createElement('div');
+                div.id = 'alertMsg';
+                div.className = 'alert alert-warning mt-3';
+                div.textContent = 'Primero crea un País para poder crear Regiones.';
+                body.appendChild(div);
+            }else{
+                countries.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.textContent = `${c.nombreCountry} (id ${c.id})`;
+                    sel.appendChild(opt);
+                });
+                sel.disabled = false;
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+        }catch(e){ console.error(e); }
+    }
+    this.loadCountries();
+    
 }
 
 render() {
@@ -21,7 +52,7 @@ render() {
                 Registro de Regiones <span class="badge rounded-pill text-bg-primary" id="idView"></span>
             </div>
             <div class="card-body">
-                <form id="frmDataRegions">
+                <form id="frmDataRegions">\n                    <div class="row mt-2">\n                        <div class="col">\n                            <label for="idCountry" class="form-label">País</label>\n                            <select class="form-select" id="idCountry" name="idCountry"></select>\n                        </div>\n                    </div>
                     <div class="row">
                         <div class="col">
                             <label for="nombreRegion" class="form-label">Nombre Region</label>
@@ -52,6 +83,37 @@ render() {
         this.ctrlBtn(e.target.dataset.ed);
         this.resetIdView();
         this.disableFrm(true);
+    this.loadCountries = async () => {
+        try{
+            const r = await fetch('http://localhost:3000/countries');
+            const countries = await r.json();
+            const sel = this.querySelector('#idCountry');
+            if(!sel) return;
+            sel.innerHTML = '';
+            if(!countries || countries.length===0){
+                sel.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+                this.querySelector('#alertMsg')?.remove();
+                const body = this.querySelector('#frmDataRegions').closest('.card-body');
+                const div = document.createElement('div');
+                div.id = 'alertMsg';
+                div.className = 'alert alert-warning mt-3';
+                div.textContent = 'Primero crea un País para poder crear Regiones.';
+                body.appendChild(div);
+            }else{
+                countries.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.textContent = `${c.nombreCountry} (id ${c.id})`;
+                    sel.appendChild(opt);
+                });
+                sel.disabled = false;
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+        }catch(e){ console.error(e); }
+    }
+    this.loadCountries();
+    
     })
 }
 resetIdView =() =>{
@@ -128,6 +190,37 @@ delData = () =>{
     .then(responseData => {
         this.resetIdView();
         this.disableFrm(true);
+    this.loadCountries = async () => {
+        try{
+            const r = await fetch('http://localhost:3000/countries');
+            const countries = await r.json();
+            const sel = this.querySelector('#idCountry');
+            if(!sel) return;
+            sel.innerHTML = '';
+            if(!countries || countries.length===0){
+                sel.disabled = true;
+                this.querySelector('#btnGuardar').disabled = true;
+                this.querySelector('#alertMsg')?.remove();
+                const body = this.querySelector('#frmDataRegions').closest('.card-body');
+                const div = document.createElement('div');
+                div.id = 'alertMsg';
+                div.className = 'alert alert-warning mt-3';
+                div.textContent = 'Primero crea un País para poder crear Regiones.';
+                body.appendChild(div);
+            }else{
+                countries.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.textContent = `${c.nombreCountry} (id ${c.id})`;
+                    sel.appendChild(opt);
+                });
+                sel.disabled = false;
+                this.querySelector('#btnGuardar').disabled = false;
+            }
+        }catch(e){ console.error(e); }
+    }
+    this.loadCountries();
+    
         this.ctrlBtn(e.target.dataset.ed);
         // Hacer algo con la respuesta exitosa si es necesario
     })

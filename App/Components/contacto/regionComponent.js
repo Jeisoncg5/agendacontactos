@@ -1,5 +1,5 @@
-import '/App/Components/contacto/regRegions.js';
-import '/App/Components/contacto/lstRegions.js';
+import './regRegions.js';
+import './lstRegions.js';
 export class RegionsComponent extends HTMLElement {
     constructor() {
         super();
@@ -10,7 +10,7 @@ export class RegionsComponent extends HTMLElement {
 render() {
     this.innerHTML = /* html */ `
     <style rel="stylesheet">
-        @import "./App/Components/contacto/contactoStyle.css";
+        @import './contactoStyle.css";
     </style>
     <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -21,10 +21,10 @@ render() {
     </li>
     </ul>
     <div class="container" id="regRegions" style="display:block;">
-        <reg-cities></reg-cities>
+        <reg-regions></reg-regions>
     </div>
     <div class="container" id="lstRegions" style="display:none;">
-        <lst-cities></lst-cities>
+        <lst-region></lst-region>
     </div>    
     `;
     this.querySelectorAll(".mnucontacto").forEach((val, id) => {

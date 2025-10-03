@@ -1,29 +1,16 @@
 {
   "countries": [
     {
-      "nombreCountry": "Colombia",
-      "id": 1
+      "id": "3bcc",
+      "nombreCountry": "Colombia"
     }
   ],
-  "cities": [
-    {
-      "nombreCity": "bogota",
-      "id": 2
-    },
-    {
-      "nombreCity": "Madrid",
-      "id": 3
-    },
-    {
-      "nombreCity": "yucatan",
-      "id": 4
-    }
-  ],
+  "cities": [],
   "regions": [
     {
-      "nombreRegion": "andina",
-      "idCountry": 1,
-      "id": 1
+      "id": "6720",
+      "idCountry": "3bcc",
+      "nombreRegion": "ohzi"
     }
   ]
 }
