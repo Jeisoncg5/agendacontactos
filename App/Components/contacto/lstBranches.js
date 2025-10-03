@@ -1,3 +1,4 @@
+import { getBranches } from '../../../Apis/contact/branchesApi.js';
 export class LstBranches extends HTMLElement{
   constructor(){ super(); this.render(); this.load(); window.addEventListener('data-changed',(e)=>{ if(e.detail?.type==='branches') this.load(); }); }
   render(){ this.innerHTML=/*html*/`
@@ -9,9 +10,15 @@ export class LstBranches extends HTMLElement{
   </tr></thead><tbody></tbody></table>
   </div></div></div>`; }
   async load(){ try{
-    const r=await fetch('http://localhost:3000/branches'); const data=await r.json();
+    const r=await getBranches();
+    if(!r.ok){ this.querySelector('tbody').innerHTML = `<tr><td colspan="8" class="text-danger">No existe colección de branches en db.json</td></tr>`; return; }
+    const txt = await r.text();
+    let data = []; try{ data = JSON.parse(txt||"[]"); }catch{ data = []; }
     const tb=this.querySelector('tbody'); tb.innerHTML='';
-    data.forEach(row=>{ const tr=document.createElement('tr'); tr.innerHTML=`<td>${row.id||''}</td><td>${row.idCompany||''}</td><td>${row.nombreBranch||''}</td><td>${row.email||''}</td><td>${row.contactName||''}</td><td>${row.phone||''}</td><td>${row.address||''}</td><td>${row.commercialNumber||''}</td>`; tb.appendChild(tr); });
+    data.forEach(row=>{ const tr=document.createElement('tr'); tr.innerHTML=`
+      <td>${row.id||''}</td><td>${row.idCompany||''}</td><td>${row.nombreBranch||''}</td>
+      <td>${row.email||''}</td><td>${row.contactName||''}</td><td>${row.phone||''}</td>
+      <td>${row.address||''}</td><td>${row.commercialNumber||''}</td>`; tb.appendChild(tr); });
   }catch(e){ console.error(e); } }
 }
 customElements.define("lst-branches", LstBranches);

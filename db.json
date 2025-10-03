@@ -10,14 +10,43 @@
       "id": "400c",
       "idCountry": "be5f",
       "idRegion": "dec9",
-      "nombreCity": "NotengoNiideaÑero"
+      "nombreCity": "Chad"
     }
   ],
   "regions": [
     {
       "id": "dec9",
       "idCountry": "be5f",
-      "nombreRegion": "Chocolandia"
+      "nombreRegion": "Zimbague"
+    }
+  ],
+  "companies": [
+    {
+      "id": "a1b2",
+      "idCity": "400c",
+      "nombreCompany": "Tech Solutions"
+    },
+    {
+      "id": "3e4f",
+      "idCountryC": "be5f",
+      "idRegionC": "dec9",
+      "idCity": "400c",
+      "nombreCompany": "inversiones sas",
+      "nit": "123123",
+      "email": "xd@gmail.com",
+      "address": "11-122"
+    }
+  ],
+  "branches": [
+    {
+      "id": "259b",
+      "idCompany": "a1b2",
+      "nombreBranch": "manzana",
+      "email": "hr@somecompany.com",
+      "contactName": "123123",
+      "phone": "123123",
+      "address": "xear",
+      "commercialNumber": "123123"
     }
   ]
 }

@@ -275,3 +275,4 @@ disableFrm = (estado) =>{
     }
 }
 customElements.define("reg-regions", RegRegions);
+try{ window.dispatchEvent(new CustomEvent('data-changed', { detail: { type: 'regions' } })); }catch(e){}
