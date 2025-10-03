@@ -7,10 +7,10 @@
   ],
   "cities": [
     {
-      "id": "400c",
+      "id": "3dc0",
       "idCountry": "be5f",
       "idRegion": "dec9",
-      "nombreCity": "NotengoNiideaÑero"
+      "nombreCity": "Zimbague"
     }
   ],
   "regions": [
@@ -18,6 +18,30 @@
       "id": "dec9",
       "idCountry": "be5f",
       "nombreRegion": "Chocolandia"
+    }
+  ],
+  "companies": [
+    {
+      "id": "6b5e",
+      "idCountryC": "be5f",
+      "idRegionC": "dec9",
+      "idCity": "3dc0",
+      "nombreCompany": "Techtecno",
+      "nit": "6949",
+      "email": "hr@somecompany.com",
+      "address": "11*22"
+    }
+  ],
+  "branches": [
+    {
+      "id": "29b0",
+      "idCompany": "6b5e",
+      "nombreBranch": "branch12",
+      "email": "hr@somecompany.com",
+      "contactName": "123123",
+      "phone": "123123123",
+      "address": "11*236",
+      "commercialNumber": "32165498574"
     }
   ]
 }

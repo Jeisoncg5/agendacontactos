@@ -1,4 +1,4 @@
-# README 
+# Ejercicio Js
 
 Proyecto **vanilla JS + Web Components** para gestionar **Countries, Regions, Cities, Companies y Branches**.
  Backend mock con **json-server** (REST) y UI modular con pestañas **Registrar / Listado** por entidad.
