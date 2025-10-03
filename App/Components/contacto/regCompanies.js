@@ -1,11 +1,34 @@
 import { postCompanies, patchCompanies, deleteCompanies } from '../../../Apis/contact/companiesApi.js';
+import { postCompanies, patchCompanies, deleteCompanies } from '../../../Apis/contact/companiesApi.js';
 import CompaniesModel from '../../../Models/companiesModel.js';
 export class RegCompanies extends HTMLElement{
+  constructor(){ super(); this.render(); this.enabledBtns(); this.bindToolbar(); this.saveData(); this.eventoEditar(); this.eventoEliminar(); this.disableFrm(true); this.loadCountries(); }
   constructor(){ super(); this.render(); this.enabledBtns(); this.bindToolbar(); this.saveData(); this.eventoEditar(); this.eventoEliminar(); this.disableFrm(true); this.loadCountries(); }
   render(){ this.innerHTML=/*html*/`
   <style rel="stylesheet">@import "./App/Components/contacto/contactoStyle.css";</style>
   <div class="card mt-3"><div class="card-header">Registrar Company <span class="badge rounded-pill text-bg-primary" id="idView"></span></div>
+  <div class="card mt-3"><div class="card-header">Registrar Company <span class="badge rounded-pill text-bg-primary" id="idView"></span></div>
   <div class="card-body"><form id="frmDataCompanies">
+    <div class="row">
+      <div class="col"><label class="form-label" for="idCountryC">País</label><select class="form-select" id="idCountryC" name="idCountryC"></select></div>
+      <div class="col"><label class="form-label" for="idRegionC">Región</label><select class="form-select" id="idRegionC" name="idRegionC"></select></div>
+      <div class="col"><label class="form-label" for="idCity">Ciudad</label><select class="form-select" id="idCity" name="idCity"></select></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col"><label class="form-label" for="nombreCompany">Nombre de la empresa</label><input class="form-control" id="nombreCompany" name="nombreCompany"></div>
+      <div class="col"><label class="form-label" for="nit">NIT</label><input class="form-control" id="nit" name="nit"></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col"><label class="form-label" for="email">Email</label><input class="form-control" id="email" name="email" type="email"></div>
+      <div class="col"><label class="form-label" for="address">Address</label><input class="form-control" id="address" name="address"></div>
+    </div>
+    <div class="row mt-3"><div class="col"><div class="container mt-4 text-center">
+      <a href="#" class="btn btn-primary"  id="btnNuevo"    data-ed='[["#btnGuardar","#btnCancelar"],["#btnNuevo","#btnEditar","#btnEliminar"]]'>Nuevo</a>
+      <a href="#" class="btn btn-dark "    id="btnCancelar" data-ed='[["#btnNuevo"],["#btnGuardar","#btnEditar","#btnEliminar","#btnCancelar"]]'>Cancelar</a>
+      <a href="#" class="btn btn-success"  id="btnGuardar"  data-ed='[["#btnEditar","#btnCancelar","#btnNuevo","#btnEliminar"],["#btnGuardar"]]'>Guardar</a>
+      <a href="#" class="btn btn-warning"  id="btnEditar"   data-ed='[[],[]]'>Editar</a>
+      <a href="#" class="btn btn-danger"   id="btnEliminar" data-ed='[["#btnNuevo"],["#btnGuardar","#btnEditar","#btnEliminar","#btnCancelar"]]'>Eliminar</a>
+    </div></div></div>
     <div class="row">
       <div class="col"><label class="form-label" for="idCountryC">País</label><select class="form-select" id="idCountryC" name="idCountryC"></select></div>
       <div class="col"><label class="form-label" for="idRegionC">Región</label><select class="form-select" id="idRegionC" name="idRegionC"></select></div>
